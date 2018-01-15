@@ -12,13 +12,18 @@
 ### apt/yum用法介绍
 >apt是debian系统的包管理工具,yum是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器
 
-
-apt在正常使用之前需要配置软件源，配置文件为/etc/apt/souces.list
-
+apt配置源的方法
 ```shell
 >>>echo "deb xxxxx.com/xxxx" >>/etc/apt/souces.list
 >>>apt-get clean
 >>>apt-get update
+```
+yum配置源的方法
+```shell
+>>>cd /etc/yum.repos.d/ #进入目录
+>>>mv CentOS-Base.repo CentOS-Base.repo.bak #备份之前的源
+>>>wget http://mirrors.163.com/.help/CentOS6-Base-163.repo #下载新的源
+>>>mv CentOS6-Base-163.repo CentOS-Base.repo #改个名字
 ```
 
 |apt命令|说明|yum命令|
@@ -42,7 +47,8 @@ apt在正常使用之前需要配置软件源，配置文件为/etc/apt/souces.l
 |sudo apt-get build-dep package|安装相关编译环境|没有对应命令
 |apt-file search /file/name|搜索所有提供某个文件的软件包|yum provides /file/name
 |dpkg -l|显示所有已安装的软件|yum list installed
-
+|没有这个命令|列出所有软件包的信息,如果指定 软件名则列出某个软件的信息|yum info
+|没有这个命令|列出所有已安裝的软件包信息|yum info installed
 ### dpkg/rpm包管理器用法
 >dpkg是Debian系统的后台包管理器,类似RPM。也是Debian包管理系统的中流砥柱,负责安全卸载软件包,配置,以及维护已安装的软件包
 
