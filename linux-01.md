@@ -1,6 +1,6 @@
-#linux基础
+# linux基础
 
-###debian与centos的常见区别
+### debian与centos的常见区别
 >debian和centos的区别还是很大的，但是对于我们使用者来说，记住如下几个区别暂时够用了
 
 |功能|debian命令|centos/redhat命令|
@@ -9,7 +9,7 @@
 |包管理器|deb包用dpkg|rpm包用rpm
 |服务管理|systemcd|service
 
-###debian apt用法介绍
+### apt用法介绍
 >apt在正常使用之前需要配置软件源，配置文件为/etc/apt/souces.list
 
 ```shell
@@ -37,3 +37,21 @@
 |apt-cache depends package|了解当前包使用的依赖|这对系统工程师很重要
 |apt-cache rdepends package|查看该包被哪些程序依赖|这对系统工程师很重要
 |sudo apt-get build-dep package|安装相关编译环境
+
+
+### dpkg包管理器用法
+>dpkg是Debian系统的后台包管理器,类似RPM。也是Debian包管理系统的中流砥柱,负责安全卸载软件包,配置,以及维护已安装的软件包
+
+|命令|说明|
+| :--- | :----: |
+|dpkg –l \| grep package| 查询deb包的详细信息，没有指定包则显示全部已安装包
+|dpkg -s package| 查看已经安装的指定软件包的详细信息
+|dpkg -L package| 列出一个包安装的所有文件清单，很实用的功能
+|dpkg -S file |查看系统中的某个文件属于哪个软件包,搜索已安装的软件包,实用功能
+|dpkg -i xxx.deb| 安装指定deb包，后面必须是deb包
+|dpkg -R |后面加上目录名，用于安装该目录下的所有deb安装包，一般不建议这样用
+|dpkg -r package |remove，移除某个已安装的软件包
+|dpkg -P package| 彻底的卸载，包括软件的配置文件
+|dpkg -c |查询deb包文件中所包含的文件
+|dpkg -L |查看系统中安装包的的详细清单，同时执行 -c
+
