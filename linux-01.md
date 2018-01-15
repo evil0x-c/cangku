@@ -48,18 +48,16 @@ apt在正常使用之前需要配置软件源，配置文件为/etc/apt/souces.l
 
 |dpkg命令|说明|rpm
 | :--- | :----: | ----: |
-|dpkg –l \| grep package| 查询deb包的详细信息，没有指定包则显示全部已安装包
-|dpkg -s package| 查看已经安装的指定软件包的详细信息
+|dpkg –l | 显示所有已安装的软件|rpm -qa
+|dpkg -s package| 查看已经安装的指定软件包的详细信息|rpm -qpi pkg.rpm
 |dpkg -L package| 列出一个包安装的所有文件清单，很实用的功能|rpm -qpd pkg.rpm
-|dpkg -S file |查看系统中的某个文件属于哪个软件包,搜索已安装的软件包,实用功能
-|dpkg -i xxx.deb| 安装指定deb包，后面必须是deb包
+|dpkg -S file |查看系统中的某个文件属于哪个软件包|rpm -qf /file/name
+|dpkg -i xxx.deb| 安装指定deb包，后面必须是deb包|rpm -i pkg.rpm
 |dpkg -R |后面加上目录名，用于安装该目录下的所有deb安装包，一般不建议这样用
-|dpkg -r package |remove，移除某个已安装的软件包
-|dpkg -P package| 彻底的卸载，包括软件的配置文件
-|dpkg -c |查询deb包文件中所包含的文件
-|dpkg -L |查看系统中安装包的的详细清单，同时执行 -c
+|dpkg -r package |remove，移除某个已安装的软件包|rpm -e package
+|dpkg -P package| 彻底的卸载，包括软件的配置文件|没有对应命令
+|dpkg -c |查询deb包文件中所包含的文件|rpm -qpl pkg.rpm
+|dpkg -L |查看系统中安装包的的详细清单|rpm -qpl pkg.rpm
 
-### yum用法
-> yum，是Yellow dog Updater, Modified的简称, 是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基於RPM包管理,对应debian中的apt
 
 
