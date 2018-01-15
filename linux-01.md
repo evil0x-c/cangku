@@ -10,6 +10,13 @@
 |服务管理|systemcd|service
 
 ###debian apt用法介绍
+>apt在正常使用之前需要配置软件源，配置文件为/etc/apt/souces.list
+
+```shell
+>>>echo "deb xxxxx.com/xxxx" >>/etc/apt/souces.list
+>>>apt-get clean
+>>>apt-get update
+```
 
 |命令|说明|备注|
 | :--- | :----: | ----: |
@@ -20,3 +27,13 @@
 |apt-get -f install package|修复软件包|自动尝试修复某些软件包的安装问题，比如依赖问题，配置问题
 |apt-get remove package - - purge|删除包和配置文件|删除配置文件重装软件往往是一种无奈的问题解决方式，当然有效的很
 |apt-get update| 更新源|用于更新软件仓库列表，但是不安装软件，注意和yum的区别
+|apt-get upgrade|更新已经安装的软件包|这句话可以理解为更新系统
+|apt-get dist-upgrade| 升级系统|顾名思义，系统升级，同时也会更新所有软件包
+|apt-cache show package|获取软件包信息|
+|apt-cache search package|根据关键字搜索软件包|搜索结果一般很多，我们还要进行详细过滤或者配合show命令来找我们想要的
+|apt-get source package|下载源码|有时候我们需要手动改动一些东西然后重新编译，这个时候需要源码
+|apt-get clean && sudo apt-get autoclean|清理apt缓存和无用的包|更多时候是为了释放硬盘空间
+|apt-get check|检查是否有损坏的依赖|这个对于系统工程师很重要
+|apt-cache depends package|了解当前包使用的依赖|这对系统工程师很重要
+|apt-cache rdepends package|查看该包被哪些程序依赖|这对系统工程师很重要
+|sudo apt-get build-dep package|安装相关编译环境
