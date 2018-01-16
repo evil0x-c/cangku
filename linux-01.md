@@ -118,3 +118,20 @@ yum配置源的方法
 >>>/media #挂载软盘的目录
 >>>/var #日志和其他临时信息存储目录
 ```
+#### 命令行文本管理
+>这里我们将学习到文本的创建，移动，修改，复制粘贴删除等操作
+
+```shell
+>>>touch testfile #创建一个空文件
+>>>echo "this is a test" > testfile #利用重定向方法创建一个文件
+>>>vim testfile #通过文本编辑器创建文件
+>>>mv file1 file2 #移动文件或者改名字或者移动后改名字
+>>>mv -f file1 file2 #强制移动，如果有同名直接覆盖
+>>>mv -i file1 file2 #如果遇到 同名提示
+>>>rm file #删除文件
+>>>rm -f file #强制删除文件
+>>>rm -i file #删除前询问
+>>>mkdir dir1 #创建目录
+>>>mkdir -p /home/xxx/xx/xx/xx #创建多层级目录
+
+```
