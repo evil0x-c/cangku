@@ -126,12 +126,22 @@ yum配置源的方法
 >>>echo "this is a test" > testfile #利用重定向方法创建一个文件
 >>>vim testfile #通过文本编辑器创建文件
 >>>mv file1 file2 #移动文件或者改名字或者移动后改名字
+>>>mv dir1 dir2 #移动目录
 >>>mv -f file1 file2 #强制移动，如果有同名直接覆盖
 >>>mv -i file1 file2 #如果遇到 同名提示
 >>>rm file #删除文件
 >>>rm -f file #强制删除文件
 >>>rm -i file #删除前询问
+>>>rm -r dir1 #删除文件夹
 >>>mkdir dir1 #创建目录
 >>>mkdir -p /home/xxx/xx/xx/xx #创建多层级目录
+>>>cp file1 file2 #复制文件
+>>>cp -r dir1 dir2 #复制目录
+```
+### man帮助文档命令
+>linux命令过多难以记忆，因此实际上需要的时候可以搜索帮助文档，可以像使用vi一样的操作man文档
 
+```shell
+>>>man top
+>>>man ps
 ```
