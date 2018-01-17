@@ -72,7 +72,17 @@
 
 
 ### service和systemd控制服务
+>service 和systemd是两个不同的东西，cnetos中7一下的版本是service，这个工具是用来管理服务的，systemd是centos7以后的版本，debian目前普遍使用的服务管理器，当然systemd不仅仅是管理服务，还管理着计算机的启动后的一切的事情和系统日志，和使用service的系统有显著的差别，下面介绍一下这两个的用法
 
+```shell
+>>>service <service> status #查看某服务的状态
+>>>service <service> start #启动某个服务
+>>>service <service> stop #关闭某个服务
+>>>service <service> restart #重启某个服务
+>>>chkconfig <service> on #设置指定服务<service>开机时自动启动
+>>>chkconfig <service> off #设置指定服务<service>开机时不自动启动。
+ 
+```
 ### nmcli 配置网络连接
 
 
