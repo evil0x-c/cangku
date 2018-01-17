@@ -54,7 +54,9 @@
 ```shell
 >>> groupadd group1 #此命令向系统中增加了一个新组group1
 >>> groupadd -g 101 group2 #此命令向系统中增加了一个新组group2，同时指定新组的组标识号是101
-
+>>> groupdel group1
+>>> groupmod -g 102 group2 #改变group2的gid
+>>> groupmod –g 10000 -n group3 group2 #此命令将组group2的标识号改为10000，组名修改为group3
 
 ```
 ### 文件管理二
