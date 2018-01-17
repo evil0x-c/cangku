@@ -83,6 +83,31 @@
 >>>chkconfig <service> off #设置指定服务<service>开机时不自动启动。
  
 ```
+```shell
+>>> systemd-analyze #打印系统启动时间，因为systemd接管了init，所以它也就可以计算启动时间
+>>> systemd-analyze blame #以进程初始化所占用时间排序打印出所有正在运行的单元列表
+>>> systemctl #打印所有正在运行的单元
+>>> systemctl list-unit-files 列出所有可用的单元
+>>> systemctl list-unit-files –type=service #列出所有服务，systemd还可以管理服务之外的其他单元
+>>> systemctl --failed #查看启动失败的服务
+>>> systemctl start httpd.service #启动某个服务
+>>> systemctl restart httpd.service #重新启动某个服务
+>>> systemctl stop httpd.service #停止某个服务
+>>> systemctl reload httpd.service #重载某个服务
+>>> systemctl status httpd.service #检查服务的状态及信息
+>>> systemctl is-active mysql.service #检查服务是否在运行
+>>> systemctl enable mysql.service #设置开机启动
+>>> systemctl disable mysql.service #禁止开机启动
+>>> systemctl mask ntpdate.service #禁用某个服务
+>>> systemctl unmask ntpdate.service #从禁用中恢复服务
+>>> systemctl kill crond #杀死某个服务
+>>> systemctl reboot #重启
+>>> systemctl halt #停止
+>>> systemctl suspend #挂起
+>>> systemctl hibernate #休眠
+>>> systemctl hybrid-sleep #休眠系统或使系统进入混合睡眠 
+```
+
 ### nmcli 配置网络连接
 
 
