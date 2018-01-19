@@ -167,5 +167,5 @@
 ```
 
 ### nmcli 配置网络连接
-
+>[配置静态ip](http://blog.csdn.net/clevercode/article/details/46376985)
 
