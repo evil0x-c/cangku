@@ -34,7 +34,7 @@ yum配置源的方法
 |apt-get install --reinstall package|重新安装某个软件包|有的时候我们会需要重新安装以达到更新配置或者被改乱了的软件
 |apt-get -f install package|修复软件包|自动尝试修复某些软件包的安装问题，比如依赖问题，配置问题
 |apt-get remove package - - purge|删除包和配置文件|删除配置文件重装软件往往是一种无奈的问题解决方式，当然有效的很
-|apt-get update| 更新源|每次运行yum时自动执行,注意与apt的区别
+|apt-get update| 更新源|每次运行yum时自动执行,注意与apt的区别,但是一般用yum makecache
 |apt-get upgrade|更新已经安装的软件包|yum update
 |apt-get dist-upgrade| 升级系统|yum upgrade
 |apt-cache show package|获取软件包信息|
