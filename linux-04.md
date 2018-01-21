@@ -31,6 +31,19 @@ Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构
 >>>chown -R apach2.apache2 /var/www/html
 >>>chmod -R 2570 /www/html/
 ```
+### php安全设置
+>这个设置有别与apache2是在php.ini中
+```shell
+safe_mode=on 
+safe_mode_gid = off
+open_basedir = /var/www/html/ 限制只能访问自己的web目录
+disable_functions = system,passthru,exec,shell_exec,popen,phpinfo #限制危险的函数
+disable_functions = chdir,chroot,dir,getcwd,opendir,readdir,scandir,fopen,unlink,delete,copy,mkdir限制特殊操作
+expose_php = Off #限制查看版本信息
+magic_quotes_gpc = on #打开魔术引号，防止sql注入
+display_errors = Off 禁止打印错误信息防止被黑客利用
+
+```
 ### ftp加固
 ```shell
 anonymous_enable=NO　＃设置不能匿名访问
