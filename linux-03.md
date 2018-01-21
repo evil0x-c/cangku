@@ -8,7 +8,7 @@
 >>>service network restart
 ```
 ### HTTP服务的安装
-
+>下面是基础的使用知识，附赠一个php站点的搭建实例[dvwa搭建](http://blog.csdn.net/isinstance/article/details/54090936)
 ```shell
 >>> yum install httpd 
 >>> vim /etc/httpd/conf/httpd.conf #apache2的配置(题外话：apt-get install apache2　是一样的)
