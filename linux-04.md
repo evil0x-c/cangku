@@ -34,11 +34,33 @@ Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构
 ### ftp加固
 ```shell
 anonymous_enable=NO　＃设置不能匿名访问
-
 userlist_deny=NO　设置为no并在vsftpd.userlist指定可登录用户
+vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 ```
 ### 常规加固
 
 1删除不必要的用户组
+```shell
+>>>vim /etc/passwd #修改之前先备份
+>>>vim /etc/sudoers#修改之前先备份
+>>>vim /etc/group#修改之前先备份
+```
 ２服务用户要保证没有bin/bash的权限
+```shell
+>>>vim /etc/passwd
+```
+３删除不必要的软件
+```shell
+>>>rpm -e python
+>>>rpm -e gcc
+4关闭不必要的服务
+```shell
+>>>chkconfig|grep on
+```
+>>>rpm -e netcat
+>>>rpm -e wget
+>>>rpm -e curl
+>>>rpm -e perl
+```
 
+[相关内容](http://blog.csdn.net/knight_zhen/article/details/46444451)
