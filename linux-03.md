@@ -18,15 +18,15 @@
 
 ### FTP服务的安装
 
+安装后要把chroot_list_enable=NO这样设置，不然就要指定chroot_list
 ```shell
 >>>yum install -y vsftpd #安装ftp服务
 >>>yum install -y lftp #安装测试ftp服务的工具
 >>>service vsftpd start #启动ftp服务
 >>>service vsftpd status #查看服务的状态
 >>>lftp 127.0.0.1 #查看是否可以链接ftp
-
-
 ```
+
 
 ### SSH服务的安装
 
