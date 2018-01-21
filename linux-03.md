@@ -58,4 +58,29 @@ chkconfig sshd on　#设置开机启动
 ### python
 >python是自带的不需要安装。。
 
+### nmap
+>[nmap详解](http://blog.csdn.net/github_35068711/article/details/51530422)
+
+### c语言编译
+>这里面我们讲解一下c语言程序简单的编译技巧
+首先安装gcc
+```shell
+>>> yum install gcc*
+```
+其次写一个c代码的文件hello.c
+```c
+#include<stdlib.h>
+    int main(int argc,char **argv)
+    {
+        printf("Hello,Linux.\n");
+        exit(0);
+    }
+```
+对单个文件进行编译
+
+```shell
+>>>gcc -o hello hello.c
+>>>./hello #执行
+```
+
 
