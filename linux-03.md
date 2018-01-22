@@ -134,6 +134,6 @@ system(shell_cmd);
 ```shell
 >>>chmod +x shelltest
 >>>chmod +x /etc/rc.d/rc.local 
->>>vim /etc/rc.d/rc.local＃编辑它并在里面协商./xxx/xx/xx/shelltest
+>>>vim /etc/rc.d/rc.local＃编辑它并在里面协商./xxx/xx/xx/shelltest &
 >>>reboot #重启看看效果
 ```
