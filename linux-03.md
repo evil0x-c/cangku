@@ -13,6 +13,7 @@
 >>> yum install httpd 
 >>> vim /etc/httpd/conf/httpd.conf #apache2的配置(题外话：apt-get install apache2　是一样的)
 >>> echo "hello class" > /var/www/html/index.html #写一个首页
+>>> service httpd restart
 
 ```
 
