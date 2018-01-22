@@ -146,13 +146,13 @@
 >>> systemd-analyze blame #以进程初始化所占用时间排序打印出所有正在运行的单元列表
 >>> systemctl #打印所有正在运行的单元
 >>> systemctl list-unit-files 列出所有可用的单元
->>> systemctl list-unit-files –type=service #列出所有服务，systemd还可以管理服务之外的其他单元
+>>> systemctl list-unit-files --type=service #列出所有服务，systemd还可以管理服务之外的其他单元
 >>> systemctl --failed #查看启动失败的服务
->>> systemctl start httpd.service #启动某个服务
->>> systemctl restart httpd.service #重新启动某个服务
->>> systemctl stop httpd.service #停止某个服务
->>> systemctl reload httpd.service #重载某个服务
->>> systemctl status httpd.service #检查服务的状态及信息
+>>> systemctl start apache2 #启动某个服务
+>>> systemctl restart apache2 #重新启动某个服务
+>>> systemctl stop apache2 #停止某个服务
+>>> systemctl reload apache2 #重载某个服务
+>>> systemctl status apache2 #检查服务的状态及信息
 >>> systemctl is-active mysql.service #检查服务是否在运行
 >>> systemctl enable mysql.service #设置开机启动
 >>> systemctl disable mysql.service #禁止开机启动
