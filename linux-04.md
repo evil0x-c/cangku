@@ -46,10 +46,17 @@ display_errors = Off 禁止打印错误信息防止被黑客利用
 ```
 ### ftp加固
 ```shell
-anonymous_enable=NO　＃设置不能匿名访问
+anonymous_enable=NO　＃设置不能匿名访问,防止匿名读取
 userlist_deny=NO　设置为no并在vsftpd.userlist指定可登录用户
 vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 ```
+### sql加固
+
+```shell
+>>> yum install mysql #升级到最新
+>>>vim /etc/mysql/mysql.d/mysql.cnf ＃查看启动账户是否是root如果是，改成ｍysql
+```
+
 ### 常规加固
 
 1删除不必要的用户组
