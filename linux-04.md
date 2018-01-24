@@ -55,6 +55,8 @@ vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 ```shell
 >>> yum install mysql #升级到最新
 >>>vim /etc/mysql/mysql.d/mysql.cnf ＃查看启动账户是否是root如果是，改成ｍysql
+>>>vim /etc/mysql/mysql.d/mysql.cnf ##skip-networking，如果有这个设置打开它，禁止远程连接
+
 ```
 
 ### 常规加固
