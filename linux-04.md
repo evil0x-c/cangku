@@ -105,4 +105,4 @@ iptables -P INPUT DROP
 [相关内容](http://blog.csdn.net/knight_zhen/article/details/46444451)
 
 ### python如何调试别人的代码
-
+[pdb调试](http://blog.csdn.net/eric_sunah/article/details/56484912)
