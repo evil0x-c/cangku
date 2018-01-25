@@ -123,4 +123,5 @@ iptables -P INPUT DROP
 
 
 ### find命令查找相关文件或者可疑文件
+>find 可以在一定程度上发现一些高权限的危险的文件，我们可以根据实际情况改掉它，但是别指望这个方法100%有用
 [find 用法](http://man.linuxde.net/find)
