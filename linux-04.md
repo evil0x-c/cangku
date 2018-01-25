@@ -129,3 +129,7 @@ iptables -P INPUT DROP
 
 ### 疑似溢出漏洞可能
 >Http主要是考核web渗透的能力，根据服务器仅有的几个服务，只有ftp可能有溢出漏洞，详细说一下Ftp溢出攻击
+[例子1](http://www.freebuf.com/column/143480.html)
+
+#### 搜索exp
+>这里我们使用一个vsftp的exp才能解决溢出漏洞的提取http://www.freebuf.com/sectool/146106.html
