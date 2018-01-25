@@ -69,7 +69,7 @@ mysql>use mysql;
 mysql>select host from user where user='root'; #这里查询下是不是有'%'权限，如果没有就安全
 mysql>update user set host = 'localhost' where user = 'root';
 ```
-举个例子，我们要创建一个新的账户，然后给新的账户某个固定数据库的权限
+举个例子，我们要创建一个新的账户，然后给新的账户某个固定数据库的权限，比赛可能不需要做时间来不及
 ```shell
 create database dvwa; #创建一个新的数据库
 CREATE USER 'dvwauser'@'localhost' IDENDIFIED BY '123456'; #保证只能本地登录
