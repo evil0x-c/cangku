@@ -42,6 +42,7 @@ disable_functions = chdir,chroot,dir,getcwd,opendir,readdir,scandir,fopen,unlink
 expose_php = Off #限制查看版本信息
 magic_quotes_gpc = on #打开魔术引号，防止sql注入
 display_errors = Off 禁止打印错误信息防止被黑客利用
+allow_url_include off #关闭这个，防止文件包含漏洞
 
 ```
 ### ftp加固
@@ -119,3 +120,7 @@ iptables -P INPUT DROP
 
 ### python如何调试别人的代码
 [pdb调试](http://blog.csdn.net/eric_sunah/article/details/56484912)
+
+
+### find命令查找相关文件或者可疑文件
+[find 用法](http://man.linuxde.net/find)
