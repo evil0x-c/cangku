@@ -9,13 +9,13 @@
 ```
 打开/etc/ssh/sshd_conf文件
 ```shell
-PermitRootLogin no #这里面root能不用ssh就不用，尽量别改yes
+PermitRootLogin no #这里面root能不用ssh就不用，尽量别改yes,或者改成prohibit password,比赛可能改了配置这是个考点
 PermitEmptPasswords no ＃这个设置是否允许口令为空，很显然要选择no
 PassworAuthentication yes ＃设置是否允许口令登录，根据实际情况来改
 ```
 打开/etc/ssh/ssh_config
 ```shell
-CheckHostIP yes #设置ssh是否查看连接到服务器的主机的ip防止ＤＮＳ欺骗
+CheckHostIP yes #设置ssh是否查看连接到服务器的主机的ip防止ＤＮＳ欺骗，可有可无，某些版本应该无效了
 ```
 ### http加固
 >加固之前升级你的http
