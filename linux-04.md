@@ -102,5 +102,7 @@ iptables -A INPUT -p icmp -j ACCEPT
 iptables -P INPUT DROP  
 /etc/init.d/iptables save
 ```
-
 [相关内容](http://blog.csdn.net/knight_zhen/article/details/46444451)
+
+### python如何调试别人的代码
+
