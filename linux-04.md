@@ -54,8 +54,13 @@ vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 
 ```shell
 >>> yum install mysql #升级到最新
+>>> mysqladmin -uroot password "password" #修改root密码，默认密码可能是空，debian这么修改可能不成功
+mysql> set password for root@localhost=password('password);#进入mysql修改
+mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否安全
+mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查看是否安全
 >>>vim /etc/mysql/mysql.d/mysql.cnf ＃查看启动账户是否是root如果是，改成ｍysql
 >>>vim /etc/mysql/mysql.d/mysql.cnf ##skip-networking，如果有这个设置打开它，禁止远程连接
+>>>vim /etc/mysql/mysql.d/mysql.cnf #--skip-show-database 限制普通用户浏览其它数据库
 
 ```
 
@@ -83,6 +88,20 @@ vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 >>>rpm -e wget
 >>>rpm -e curl
 >>>rpm -e perl
+```
+### iptables
+>iptables 一般情况不要动，如果配置错误可能导致犯规，根据实际情况
+```shell
+ iptables -F   #清楚防火墙规则
+iptables -L   #查看防火墙规则
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 53 -j ACCEPT  
+iptables -A INPUT -p udp --dport 53 -j ACCEPT  
+iptables -A INPUT -p udp --dport 123 -j ACCEPT  
+iptables -A INPUT -p icmp -j ACCEPT  
+iptables -P INPUT DROP  
+/etc/init.d/iptables save
 ```
 
 [相关内容](http://blog.csdn.net/knight_zhen/article/details/46444451)
