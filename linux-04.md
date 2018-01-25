@@ -51,7 +51,7 @@ userlist_deny=NO　设置为no并在vsftpd.userlist指定可登录用户
 vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 ```
 ### sql加固
->比赛的环境应该是mysql，centos的mysql的初始密码是空的(和debian不同)，扩展[mysql常见操作](http://linux.it.net.cn/e/data/mysql/2014/1206/9723.html)
+>比赛的环境应该是mysql，centos的mysql的初始密码是空的(和debian不同)，sql加固虽然有很多选项，但是实际上考点应该就是设置root密码，并且让web使用普通数据库进行链接。扩展[mysql常见操作](http://linux.it.net.cn/e/data/mysql/2014/1206/9723.html)
 ```shell
 >>> yum install mysql #升级到最新
 >>> mysqladmin -u root password "password" #修改root密码，默认密码可能是空，debian这么修改可能不成功
@@ -59,9 +59,15 @@ mysql> set password for root@localhost=password('password);#进入mysql修改
 mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否安全，不安全加local-infile = 0
 mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查看是否安全
 >>>vim /etc/my.cnf ＃查看启动账户是否是root如果是，改成ｍysql
->>>vim /etc/mysql/mysql.d/mysql.cnf ##skip-networking，如果有这个设置打开它，禁止远程连接
->>>vim /etc/mysql/mysql.d/mysql.cnf #skip-show-database 限制普通用户浏览其它数据库
+>>>vim /etc/my.cnf ##skip-networking，如果有这个设置打开它，或者添加bind_address=127.0.0.1
+>>>vim /etc/my.cnf #skip-show-database 限制普通用户浏览其它数据库
 
+```
+或者进入Mysql里面进行修改,这种方式最保险。
+```shell
+mysql>use mysql;
+mysql>select host from user where user='root'; #这里查询下是不是有'%'权限，如果没有就安全
+mysql>update user set host = 'localhost' where user = 'root';
 ```
 举个例子，我们要创建一个新的账户，然后给新的账户某个固定数据库的权限
 ```shell
@@ -97,7 +103,7 @@ GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa�
 >>>rpm -e perl
 ```
 ### iptables
->iptables 一般情况不要动，如果配置错误可能导致犯规，根据实际情况
+>iptables 一般情况不要动，如果配置错误可能导致犯规，根据实际情况，使用iptables的好处是比如mysql远程连接，不用安全配置，在防火墙这里不放行就可以了。
 ```shell
  iptables -F   #清楚防火墙规则
 iptables -L   #查看防火墙规则
