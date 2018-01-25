@@ -51,18 +51,25 @@ userlist_deny=NO　设置为no并在vsftpd.userlist指定可登录用户
 vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
 ```
 ### sql加固
-
+>比赛的环境应该是mysql，centos的mysql的初始密码是空的(和debian不同)，扩展[mysql常见操作](http://linux.it.net.cn/e/data/mysql/2014/1206/9723.html)
 ```shell
 >>> yum install mysql #升级到最新
->>> mysqladmin -uroot password "password" #修改root密码，默认密码可能是空，debian这么修改可能不成功
+>>> mysqladmin -u root password "password" #修改root密码，默认密码可能是空，debian这么修改可能不成功
 mysql> set password for root@localhost=password('password);#进入mysql修改
-mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否安全
+mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否安全，不安全加local-infile = 0
 mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查看是否安全
->>>vim /etc/mysql/mysql.d/mysql.cnf ＃查看启动账户是否是root如果是，改成ｍysql
+>>>vim /etc/my.cnf ＃查看启动账户是否是root如果是，改成ｍysql
 >>>vim /etc/mysql/mysql.d/mysql.cnf ##skip-networking，如果有这个设置打开它，禁止远程连接
 >>>vim /etc/mysql/mysql.d/mysql.cnf #skip-show-database 限制普通用户浏览其它数据库
 
 ```
+举个例子，我们要创建一个新的账户，然后给新的账户某个固定数据库的权限
+```shell
+create database dvwa; #创建一个新的数据库
+CREATE USER 'dvwauser'@'localhost' IDENDIFIED BY '123456'; #保证只能本地登录
+GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa的数据库
+```
+[mysql 账户操作参考](http://www.jb51.net/article/31850.htm)
 
 ### 常规加固
 
