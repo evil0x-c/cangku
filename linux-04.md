@@ -89,18 +89,18 @@ GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa�
 ```shell
 >>>vim /etc/passwd
 ```
-３删除不必要的软件
+３删除不必要的软件，删除软件的时候注意使用完整的名字
 ```shell
->>>rpm -e python
->>>rpm -e gcc
+>>>rpm -e python #这个正常加固可以删，但是考试应该不用删
+>>>rpm -e perl #这个正常可以删，但是考试应该不用删
+>>>rpm -e gcc #这个可以删，阻止对面编译木马
 4关闭不必要的服务
 ```shell
 >>>chkconfig|grep on
 ```
->>>rpm -e netcat
+>>>rpm -e netcat #这个靶机服务器应该没有这个软件
 >>>rpm -e wget
 >>>rpm -e curl
->>>rpm -e perl
 ```
 ### iptables
 >iptables 一般情况不要动，如果配置错误可能导致犯规，根据实际情况，使用iptables的好处是比如mysql远程连接，不用安全配置，在防火墙这里不放行就可以了。
