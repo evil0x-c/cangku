@@ -96,9 +96,8 @@ mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查
 iptables -L   #查看防火墙规则
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
-iptables -A INPUT -p tcp --dport 53 -j ACCEPT  
-iptables -A INPUT -p udp --dport 53 -j ACCEPT  
-iptables -A INPUT -p udp --dport 123 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 21 -j ACCEPT  
+iptables -A INPUT -p udp --dport 443 -j ACCEPT  
 iptables -A INPUT -p icmp -j ACCEPT  
 iptables -P INPUT DROP  
 /etc/init.d/iptables save
