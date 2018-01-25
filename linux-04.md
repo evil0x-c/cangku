@@ -60,7 +60,7 @@ mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否
 mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查看是否安全
 >>>vim /etc/mysql/mysql.d/mysql.cnf ＃查看启动账户是否是root如果是，改成ｍysql
 >>>vim /etc/mysql/mysql.d/mysql.cnf ##skip-networking，如果有这个设置打开它，禁止远程连接
->>>vim /etc/mysql/mysql.d/mysql.cnf #--skip-show-database 限制普通用户浏览其它数据库
+>>>vim /etc/mysql/mysql.d/mysql.cnf #skip-show-database 限制普通用户浏览其它数据库
 
 ```
 
