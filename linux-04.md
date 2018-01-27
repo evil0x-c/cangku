@@ -73,7 +73,7 @@ mysql> select 'test' into outfile 'd:/test.txt'; #尝试写入文本内容，查
 ```shell
 mysql>use mysql;
 mysql>select host,user from user; #这里查询下是不是有'%'权限，如果没有就安全
-mysql>update user set host = 'localhost' where user = 'root';
+mysql>update user set host = 'localhost' where user = 'usrname';
 ```
 举个例子，我们要创建一个新的账户，然后给新的账户某个固定数据库的权限，比赛可能不需要做时间来不及
 ```shell
