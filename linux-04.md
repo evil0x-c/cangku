@@ -31,7 +31,7 @@ Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构，找到�
 >>>chmod -R 2570 /www/html/
 ```
 ### php安全设置
->这个设置有别与apache2是在php.ini中
+>这个设置有别与apache2是在php.ini中,这个是考点
 ```shell
 safe_mode=on 
 safe_mode_gid = off
