@@ -52,7 +52,7 @@ service httpd reload #重载配置文件
 ```shell
 anonymous_enable=NO　＃设置不能匿名访问,防止匿名读取
 userlist_deny=NO　设置为no并在vsftpd.userlist指定可登录用户
-vim /etc/vsftpd/vsftpd.userlist #去掉root防止爆破
+vim /etc/vsftpd/userlist #去掉root防止爆破
 ```
 ### sql加固
 >比赛的环境应该是mysql，centos的mysql的初始密码是空的(和debian不同)，sql加固虽然有很多选项，但是实际上考点应该就是设置root密码，并且让web使用普通数据库进行链接。扩展[mysql常见操作](http://linux.it.net.cn/e/data/mysql/2014/1206/9723.html)
