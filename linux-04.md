@@ -14,7 +14,7 @@ PermitEmptPasswords no ＃这个设置是否允许口令为空，很显然要选
 ```
 打开/etc/ssh/ssh_config
 ```shell
-CheckHostIP yes #设置ssh是否查看连接到服务器的主机的ip防止ＤＮＳ欺骗，可有可无，某些版本应该无效了
+CheckHostIP yes #设置ssh是否查看连接到服务器的主机的ip防止ＤＮＳ欺骗，可有可无，某些版本应该无效了，考试用不到
 ```
 ### http加固
 >加固之前升级你的http
