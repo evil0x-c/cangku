@@ -86,8 +86,8 @@ GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa�
 1删除不必要的用户组
 ```shell
 >>>vim /etc/passwd #系统账户目录
->>>vim /etc/sudoers#这里面可以配置sudo权限，如果有特殊账户要注意
->>>vim /etc/group#这里面如果有sudo组，如果sudo组后面有账户，呀注意
+>>>vim /etc/sudoers #这里面可以配置sudo权限，如果有特殊账户要注意
+>>>vim /etc/group #这里面如果有sudo组，如果sudo组后面有账户，呀注意
 ```
 ２服务用户要保证没有bin/bash的权限
 ```shell
@@ -101,7 +101,8 @@ GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa�
 4关闭不必要的服务
 ```shell
 >>>chkconfig|grep on
-```
+
+```shell
 >>>rpm -e netcat #这个靶机服务器应该没有这个软件
 >>>rpm -e wget
 >>>rpm -e curl
