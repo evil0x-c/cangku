@@ -11,7 +11,6 @@
 ```shell
 PermitRootLogin no #这里面root能不用ssh就不用，尽量别改yes,或者改成prohibit password,比赛可能改了配置这是个考点
 PermitEmptPasswords no ＃这个设置是否允许口令为空，很显然要选择no
-PassworAuthentication yes ＃设置是否允许口令登录，根据实际情况来改
 ```
 打开/etc/ssh/ssh_config
 ```shell
