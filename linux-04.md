@@ -22,7 +22,7 @@ CheckHostIP yes #设置ssh是否查看连接到服务器的主机的ip防止Ｄ�
 ```shell
 ServerSignature off #回显没有版本号（可能无效，因为centos是需要改源码，而且这个设置比赛是没用的）
 ServerTokens Prod #回显没有版本号
-Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构
+Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构，找到对应的网站目录
 
 ```
 对目录进行加固
