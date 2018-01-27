@@ -58,6 +58,7 @@ vim /etc/vsftpd/userlist #去掉root防止爆破
 >比赛的环境应该是mysql，centos的mysql的初始密码是空的(和debian不同)，sql加固虽然有很多选项，但是实际上考点应该就是设置root密码，并且让web使用普通数据库进行链接。扩展[mysql常见操作](http://linux.it.net.cn/e/data/mysql/2014/1206/9723.html)
 ```shell
 >>> yum install mysql #升级到最新
+>>> service mysqld start #启动服务
 >>> mysqladmin -u root password "password" #修改root密码，默认密码可能是空，debian这么修改可能不成功
 mysql> set password for root@localhost=password('password);#进入mysql修改
 mysql> select load_file('d://debug.txt') ;#尝试读取文本内容,查看是否安全，不安全加local-infile = 0
