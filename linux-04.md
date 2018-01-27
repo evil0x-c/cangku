@@ -27,7 +27,7 @@ Options Indexes FollowSymLinks #删掉Indexes,禁止显示目录结构，找到�
 ```
 对目录进行加固
 ```shell
->>>chown -R apach2.apache2 /var/www/html
+>>>chown -R apache.apache /var/www/html
 >>>chmod -R 2570 /www/html/
 ```
 ### php安全设置
