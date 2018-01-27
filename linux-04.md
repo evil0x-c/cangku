@@ -98,6 +98,7 @@ GRANT ALL ON dvwa.* TO 'dvwauser'@'%localhost';#指定dvwauser只能链接dvwa�
 >>>rpm -e python #这个正常加固可以删，但是考试应该不用删
 >>>rpm -e perl #这个正常可以删，但是考试应该不用删
 >>>rpm -e gcc #这个可以删，阻止对面编译木马
+>>>yum remove gcc*
 4关闭不必要的服务
 ```shell
 >>>chkconfig|grep on
