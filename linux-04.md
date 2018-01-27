@@ -44,6 +44,10 @@ display_errors = Off 禁止打印错误信息防止被黑客利用
 allow_url_include off #关闭这个，防止文件包含漏洞
 
 ```
+配置完了重启httpd
+```shell
+service httpd reload #重载配置文件
+```
 ### ftp加固
 ```shell
 anonymous_enable=NO　＃设置不能匿名访问,防止匿名读取
